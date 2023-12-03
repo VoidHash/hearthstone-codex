@@ -9,6 +9,11 @@ import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.navigation.NavigationView
 import com.voidhash.hearthstonecodex.R
 import com.voidhash.hearthstonecodex.databinding.ActivityMainBinding
+import com.voidhash.hearthstonecodex.framework.di.NetworkModule
+import com.voidhash.hearthstonecodex.framework.di.PersistenceModule
+import com.voidhash.hearthstonecodex.framework.di.ViewModelModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.GlobalContext
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -32,7 +37,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding.navigationView.setNavigationItemSelectedListener(this)
 
         navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
     }
 

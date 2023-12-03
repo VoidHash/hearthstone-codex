@@ -1,34 +1,20 @@
 package com.voidhash.hearthstonecodex.presentation.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.voidhash.hearthstonecodex.R
+import com.voidhash.hearthstonecodex.databinding.FragmentMainBinding
+import com.voidhash.hearthstonecodex.framework.viewmodel.MainViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MainFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MainFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var fragmentMainBinding: FragmentMainBinding? = null
+    private val viewModel: MainViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +24,42 @@ class MainFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MainFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MainFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val binding = FragmentMainBinding.bind(view)
+        fragmentMainBinding = binding
+
+        binding.buttonSearch.setOnClickListener {
+            //TODO
+        }
+
+        binding.buttonCollection.setOnClickListener {
+            //TODO
+        }
+
+        viewModel.initApp()
+
+        observerViewModel()
     }
+
+    private fun observerViewModel() {
+
+        viewModel.hearthstoneInfo.observe(viewLifecycleOwner) { info ->
+            info.let {
+                Log.e("DBG", "info loaded")
+            }
+        }
+
+        viewModel.backCardsCollection.observe(viewLifecycleOwner) { collection ->
+            collection.let {
+                Log.e("DBG", "deu certo")
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        fragmentMainBinding = null
+    }
+
 }

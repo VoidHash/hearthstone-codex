@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -50,7 +51,7 @@ val rxjavaVersion = "3.1.5"
 val rxAndroidVersion = "3.0.2"
 val okhttpVersion = "4.10.0"
 val retrofitVersion = "2.9.0"
-val roomVersion = "2.6.0"
+val roomVersion = "2.6.1"
 val koinVersion = "3.5.0"
 
 dependencies {
@@ -67,6 +68,7 @@ dependencies {
     //Navigation Library
     implementation ("androidx.navigation:navigation-fragment-ktx:$navigationVersion")
     implementation ("androidx.navigation:navigation-ui-ktx:$navigationVersion")
+    implementation ("androidx.navigation:navigation-dynamic-features-fragment:$navigationVersion")
 
     //Rx Java & Android
     implementation ("io.reactivex.rxjava3:rxandroid:$rxAndroidVersion")
@@ -83,11 +85,13 @@ dependencies {
 
     //Room Library
     implementation ("androidx.room:room-runtime:$roomVersion")
-    //kapt ("androidx.room:room-compiler:roomVersion")
+    ksp ("androidx.room:room-compiler:$roomVersion")
     implementation ("androidx.room:room-rxjava3:$roomVersion")
 
     //Koin Library
+    implementation ("io.insert-koin:koin-core:$koinVersion")
     implementation ("io.insert-koin:koin-android:$koinVersion")
+    implementation ("io.insert-koin:koin-androidx-navigation:$koinVersion")
     implementation ("io.insert-koin:koin-android-test:$koinVersion")
 
     testImplementation("junit:junit:4.13.2")
