@@ -5,16 +5,24 @@ plugins {
 
 android {
     namespace = "com.voidhash.hearthstonecodex"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.voidhash.hearthstonecodex"
         minSdk = 30
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    viewBinding {
+        enable = true
+    }
+
+    packaging {
+        resources.pickFirsts.add("META-INF/*")
     }
 
     buildTypes {
@@ -49,9 +57,6 @@ dependencies {
 
     implementation("androidx.core:core-ktx:$kotlinVersion")
     implementation("androidx.appcompat:appcompat:1.6.1")
-
-    implementation ("androidx.core:core-ktx:$kotlinVersion")
-    implementation ("androidx.appcompat:appcompat:1.6.1")
     implementation ("com.google.android.material:material:1.10.0")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
 

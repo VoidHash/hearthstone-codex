@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Hearthstone App colors -->
+    <color name="hs_brown">#533B27</color>
+    <color name="hs_dark_brown">#432A16</color>
+    <color name="hs_yellow">#FCD143</color>
+    <color name="hs_red">#532727</color>
+    <color name="hs_dark_red">#431616</color>
+    <color name="hs_background">#E8D1A7</color>
 </resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_home"
+        android:icon="@drawable/icon_cardset_hallofframe"
+        android:title="Home" />
+    <item
+        android:id="@+id/item_search_cards"
+        android:icon="@drawable/icon_search"
+        android:title="Search Cards" />
+    <item
+        android:icon="@drawable/icon_cardset_standard"
+        android:title="Collections" />
+    <item
+        android:icon="@drawable/icon_cards_back"
+        android:title="Cards Back" />
+</menu>
