@@ -84,6 +84,7 @@
                     android:textColor="@color/hs_dark_brown" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcl_standard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
