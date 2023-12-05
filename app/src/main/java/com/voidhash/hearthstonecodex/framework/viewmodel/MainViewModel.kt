@@ -1,5 +1,6 @@
 package com.voidhash.hearthstonecodex.framework.viewmodel
 
+import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
@@ -12,10 +13,14 @@ import com.voidhash.hearthstonecodex.framework.model.CardModel
 import com.voidhash.hearthstonecodex.framework.model.InfoModel
 import com.voidhash.hearthstonecodex.framework.remote.service.HearthstoneService
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.FlowableSubscriber
+import io.reactivex.rxjava3.core.SingleObserver
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.observers.DisposableCompletableObserver
 import io.reactivex.rxjava3.observers.DisposableSingleObserver
 import io.reactivex.rxjava3.schedulers.Schedulers
+import org.reactivestreams.Subscription
 
 class MainViewModel(
     private val hearthstoneService: HearthstoneService,
@@ -43,6 +48,7 @@ class MainViewModel(
         getInfo()
         getCards()
         getCardsBack()
+        //getStandCollectionDrawable()
     }
 
     private fun getInfo() {
@@ -181,4 +187,14 @@ class MainViewModel(
                 }
             })
     }
+
+//    @SuppressLint("CheckResult")
+//    fun getStandCollectionDrawable(): List<String> {
+//        infoDao.getInfo()
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe {
+//                    it.standard
+//                }
+//    }
 }
