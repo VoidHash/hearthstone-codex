@@ -4,14 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-data class CardBackModel(
-
-	@field:SerializedName("cardBackModel")
-	var backModel: MutableList<CardBackBase> = mutableListOf()
-)
-
 @Entity(tableName = "card_back_table")
-data class CardBackBase(
+data class CardBackModel(
 
 	@PrimaryKey
 	@field:SerializedName("cardBackId")

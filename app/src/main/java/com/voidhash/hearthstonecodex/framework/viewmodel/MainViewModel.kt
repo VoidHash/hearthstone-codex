@@ -1,26 +1,19 @@
 package com.voidhash.hearthstonecodex.framework.viewmodel
 
-import android.annotation.SuppressLint
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.voidhash.hearthstonecodex.framework.local.dao.CardBackDao
 import com.voidhash.hearthstonecodex.framework.local.dao.CardDao
 import com.voidhash.hearthstonecodex.framework.local.dao.InfoDao
-import com.voidhash.hearthstonecodex.framework.model.CardBackBase
+import com.voidhash.hearthstonecodex.framework.model.CardBackModel
 import com.voidhash.hearthstonecodex.framework.model.CardModel
 import com.voidhash.hearthstonecodex.framework.model.InfoModel
 import com.voidhash.hearthstonecodex.framework.remote.service.HearthstoneService
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.FlowableSubscriber
-import io.reactivex.rxjava3.core.SingleObserver
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.observers.DisposableCompletableObserver
 import io.reactivex.rxjava3.observers.DisposableSingleObserver
 import io.reactivex.rxjava3.schedulers.Schedulers
-import org.reactivestreams.Subscription
 
 class MainViewModel(
     private val hearthstoneService: HearthstoneService,
@@ -39,8 +32,8 @@ class MainViewModel(
         MutableLiveData<InfoModel>()
     }
 
-    val backCardsCollection: MutableLiveData<List<CardBackBase>> by lazy {
-        MutableLiveData<List<CardBackBase>>()
+    val backCardsCollection: MutableLiveData<List<CardBackModel>> by lazy {
+        MutableLiveData<List<CardBackModel>>()
     }
 
     fun initApp() {
@@ -150,8 +143,8 @@ class MainViewModel(
                 //o resultado dessa nova thread será mostrada na thread principal
                 .observeOn(AndroidSchedulers.mainThread())
                 //define o q vamos fazer com o resuldado dessa thread
-                .subscribeWith(object: DisposableSingleObserver<List<CardBackBase>>(){
-                    override fun onSuccess(value: List<CardBackBase>) {
+                .subscribeWith(object: DisposableSingleObserver<List<CardBackModel>>(){
+                    override fun onSuccess(value: List<CardBackModel>) {
                         hasError.value = false
                         isLoading.value = false
                         backCardsCollection.value = value
@@ -168,7 +161,7 @@ class MainViewModel(
         )
     }
 
-    private fun saveCardsBackIntoDB(value: List<CardBackBase>) {
+    private fun saveCardsBackIntoDB(value: List<CardBackModel>) {
         cardBackDao.addCard(value)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

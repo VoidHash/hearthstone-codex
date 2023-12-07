@@ -5,7 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.voidhash.hearthstonecodex.framework.model.CardBackBase
+import com.voidhash.hearthstonecodex.framework.model.CardBackModel
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 
@@ -16,14 +16,14 @@ interface CardBackDao {
     fun isEmpty(): Single<Boolean>
 
     @Query("SELECT * FROM card_back_table")
-    fun getAllCards(): Single<List<CardBackBase>>
+    fun getAllCards(): Single<List<CardBackModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addCard(cardList: List<CardBackBase>) : Completable
+    fun addCard(cardList: List<CardBackModel>) : Completable
 
     @Query("DELETE FROM card_back_table")
     fun deleteAll() : Completable
 
     @Delete
-    fun delete(cardEntity: CardBackBase) : Completable
+    fun delete(cardEntity: CardBackModel) : Completable
 }

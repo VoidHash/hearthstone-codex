@@ -115,6 +115,7 @@
                     android:textColor="@color/hs_dark_brown" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcl_wild"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -146,13 +147,27 @@
                     android:textColor="@color/hs_dark_brown" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcl_card_back"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:orientation="horizontal"
                     android:scrollbars="horizontal"
                     tools:itemCount="1"
                     tools:listitem="@layout/recycler_cards_back" />
+
+                <TextView
+                    android:id="@+id/txt_list_cards_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/belwe_bold"
+                    android:text="See all back cards"
+                    android:textColor="@color/hs_dark_brown"
+                    android:textStyle="italic" />
 
             </LinearLayout>
 

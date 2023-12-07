@@ -53,6 +53,7 @@ val okhttpVersion = "4.10.0"
 val retrofitVersion = "2.9.0"
 val roomVersion = "2.6.1"
 val koinVersion = "3.5.0"
+val glideVersion = "4.16.0"
 
 dependencies {
 
@@ -93,6 +94,9 @@ dependencies {
     implementation ("io.insert-koin:koin-android:$koinVersion")
     implementation ("io.insert-koin:koin-androidx-navigation:$koinVersion")
     implementation ("io.insert-koin:koin-android-test:$koinVersion")
+
+    //Glide
+    implementation ("com.github.bumptech.glide:glide:$glideVersion")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

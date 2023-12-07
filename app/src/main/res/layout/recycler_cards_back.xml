@@ -6,8 +6,11 @@
     android:orientation="horizontal">
 
     <ImageView
+        android:id="@+id/img_card_back"
         android:layout_width="375px"
         android:layout_height="518px"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/classic_back" />

@@ -7,30 +7,10 @@ import org.koin.java.KoinJavaComponent.inject
 
 object  CollectionUtils {
 
-    private val disposable = CompositeDisposable()
-    private val infoDao: InfoDao by inject(InfoDao::class.java)
-
-    fun getStandCollectionDrawable(standardList: List<String?>?): List<Int> {
+    fun getCollectionDrawable(collectionList: List<String?>?): List<Int> {
         val drawableList = mutableListOf<Int>()
-        standardList?.distinct()?.forEach { standard ->
-            when(standard) {
-                "TITANS" -> drawableList.add(R.drawable.titans_logo)
-                "Festival of Legends" -> drawableList.add(R.drawable.festival_logo)
-                "March of the Lich King" -> drawableList.add(R.drawable.lichking_logo)
-                "Murder at Castle Nathria" -> drawableList.add(R.drawable.nathria_logo)
-                "Voyage to the Sunken City" -> drawableList.add(R.drawable.sunken_logo)
-                "Fractured in Alterac Valley" -> drawableList.add(R.drawable.altarec_logo)
-                "United in Stormwind" -> drawableList.add(R.drawable.stormwind_logo)
-                "Forged in the Barrens" -> drawableList.add(R.drawable.barrens_logo)
-            }
-        }
-        return drawableList.asReversed().toList()
-    }
-
-    fun getWildCollectionDrawable(wildList: List<String>): List<Int> {
-        val drawableList = mutableListOf<Int>()
-        wildList.distinct().forEach { wildList ->
-            when(wildList) {
+        collectionList?.distinct()?.forEach { collection->
+            when(collection) {
                 "TITANS" -> drawableList.add(R.drawable.titans_logo)
                 "Festival of Legends" -> drawableList.add(R.drawable.festival_logo)
                 "March of the Lich King" -> drawableList.add(R.drawable.lichking_logo)
@@ -62,6 +42,6 @@ object  CollectionUtils {
                 "Naxxramas" -> drawableList.add(R.drawable.naxxaramas_logo)
             }
         }
-        return drawableList
+        return drawableList.toList()
     }
 }

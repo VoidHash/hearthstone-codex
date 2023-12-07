@@ -1,19 +1,17 @@
 package com.voidhash.hearthstonecodex.presentation.fragment
 
 import android.os.Bundle
-import android.text.style.LineBackgroundSpan.Standard
 import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.voidhash.hearthstonecodex.R
 import com.voidhash.hearthstonecodex.databinding.FragmentMainBinding
 import com.voidhash.hearthstonecodex.framework.util.CollectionUtils
 import com.voidhash.hearthstonecodex.framework.viewmodel.MainViewModel
+import com.voidhash.hearthstonecodex.presentation.adapter.CardBackAdapter
 import com.voidhash.hearthstonecodex.presentation.adapter.StandardAdapter
+import com.voidhash.hearthstonecodex.presentation.adapter.WildAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment(R.layout.fragment_main) {
@@ -23,6 +21,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private lateinit var binding: FragmentMainBinding
     private lateinit var standardAdapter: StandardAdapter
+    private lateinit var wildAdapter: WildAdapter
+    private lateinit var cardBackAdapter: CardBackAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,6 +33,16 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         binding.rclStandard.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         binding.rclStandard.adapter = standardAdapter
+
+        wildAdapter = WildAdapter(listOf())
+        binding.rclWild.layoutManager =
+            LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rclWild.adapter = wildAdapter
+
+        cardBackAdapter = CardBackAdapter(listOf())
+        binding.rclCardBack.layoutManager =
+            LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rclCardBack.adapter = cardBackAdapter
 
         binding.buttonSearch.setOnClickListener {
             //TODO
@@ -50,14 +60,16 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         viewModel.hearthstoneInfo.observe(viewLifecycleOwner) { info ->
             info.let {
-                val drawableList = CollectionUtils.getStandCollectionDrawable(info.standard)
-                standardAdapter.updateList(drawableList)
+                val standardList = CollectionUtils.getCollectionDrawable(info.standard)
+                standardAdapter.updateList(standardList)
+                val wildList = CollectionUtils.getCollectionDrawable(info.wild)
+                wildAdapter.updateList(wildList)
             }
         }
 
         viewModel.backCardsCollection.observe(viewLifecycleOwner) { collection ->
             collection.let {
-                Log.e("DBG", "deu certo")
+                cardBackAdapter.updateList(it.toList().reversed().take(20))
             }
         }
     }
