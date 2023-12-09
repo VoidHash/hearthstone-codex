@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.voidhash.hearthstonecodex.R
 import com.voidhash.hearthstonecodex.databinding.FragmentMainBinding
@@ -50,6 +51,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         binding.buttonCollection.setOnClickListener {
             //TODO
+        }
+
+        binding.txtListCardsBack.setOnClickListener {
+            this.findNavController().navigate(R.id.action_mainFragment_to_cardBackFragment)
         }
 
         viewModel.initApp()

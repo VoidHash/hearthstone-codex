@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/hs_background"
     android:orientation="vertical"
     tools:context=".presentation.fragment.MainFragment">
 
@@ -155,7 +154,7 @@
                     android:orientation="horizontal"
                     android:scrollbars="horizontal"
                     tools:itemCount="1"
-                    tools:listitem="@layout/recycler_cards_back" />
+                    tools:listitem="@layout/recycler_card_back" />
 
                 <TextView
                     android:id="@+id/txt_list_cards_back"

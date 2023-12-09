@@ -10,4 +10,5 @@
     <color name="hs_red">#532727</color>
     <color name="hs_dark_red">#431616</color>
     <color name="hs_background">#E8D1A7</color>
+    <color name="hs_background_dark">#C4A772</color>
 </resources>
