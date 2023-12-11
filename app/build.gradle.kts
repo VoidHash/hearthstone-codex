@@ -22,6 +22,10 @@ android {
         enable = true
     }
 
+    dataBinding {
+        enable = true
+    }
+
     packaging {
         resources.pickFirsts.add("META-INF/*")
     }
@@ -54,6 +58,7 @@ val retrofitVersion = "2.9.0"
 val roomVersion = "2.6.1"
 val koinVersion = "3.5.0"
 val glideVersion = "4.16.0"
+val dataBindingVersion = "3.1.4"
 
 dependencies {
 
@@ -97,6 +102,9 @@ dependencies {
 
     //Glide
     implementation ("com.github.bumptech.glide:glide:$glideVersion")
+
+    //Data Binding
+    ksp ("com.android.databinding:compiler:$dataBindingVersion")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

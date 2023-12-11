@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.voidhash.hearthstonecodex.R
@@ -16,6 +17,7 @@ class CardBackAdapter(private var cardBackList: List<CardBackModel>)
 
     private lateinit var context: Context
     var listener: CardBackListener? = null
+    lateinit var viewDataBinding: ViewDataBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardBackAdapter.ViewHolder {
         context = parent.context
