@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
-import com.bumptech.glide.Glide
 import com.voidhash.hearthstonecodex.R
 import com.voidhash.hearthstonecodex.databinding.FragmentCardBackBinding
 import com.voidhash.hearthstonecodex.framework.model.CardBackModel
+import com.voidhash.hearthstonecodex.framework.util.ImageUtil
 import com.voidhash.hearthstonecodex.framework.viewmodel.CardBackViewModel
 import com.voidhash.hearthstonecodex.presentation.adapter.CardBackAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -55,9 +55,7 @@ class CardBackFragment : Fragment(), CardBackAdapter.CardBackListener {
     }
 
     override fun onCardBackSelected(cardBackModel: CardBackModel) {
-
         this.cardBackModel = cardBackModel
-
         binding.model = this.cardBackModel
         binding.executePendingBindings()
 
@@ -65,12 +63,7 @@ class CardBackFragment : Fragment(), CardBackAdapter.CardBackListener {
         this.cardBackModel.name = cardBackModel.name
         this.cardBackModel.description = cardBackModel.description
         this.cardBackModel.howToGet = cardBackModel.howToGet
-        Glide
-            .with(requireContext())
-            .load(cardBackModel.img)
-            .centerCrop()
-            .placeholder(R.drawable.icon_loading)
-            .into(binding.imgCardBackDetail);
+        cardBackModel.img?.let { ImageUtil.loadRemoteImage(binding.imgCardBackDetail, it) }
         binding.layoutCardBackDetail.setOnClickListener {
             binding.layoutCardBackDetail.visibility = View.GONE
         }
