@@ -91,7 +91,7 @@
                     android:scrollbars="horizontal"
                     app:reverseLayout="true"
                     tools:itemCount="1"
-                    tools:listitem="@layout/recycler_standard_formart" />
+                    tools:listitem="@layout/recycler_collection" />
             </LinearLayout>
 
             <LinearLayout

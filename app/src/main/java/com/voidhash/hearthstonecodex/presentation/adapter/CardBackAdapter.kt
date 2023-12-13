@@ -17,7 +17,6 @@ class CardBackAdapter(private var cardBackList: List<CardBackModel>)
 
     private lateinit var context: Context
     var listener: CardBackListener? = null
-    lateinit var viewDataBinding: ViewDataBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardBackAdapter.ViewHolder {
         context = parent.context

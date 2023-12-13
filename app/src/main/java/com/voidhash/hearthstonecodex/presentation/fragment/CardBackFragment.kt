@@ -40,7 +40,7 @@ class CardBackFragment : Fragment(), CardBackAdapter.CardBackListener {
             GridLayoutManager(this.context, 3, GridLayoutManager.VERTICAL, false)
         binding.rclCardBack.adapter = cardBackAdapter
 
-        viewModel.initApp()
+        viewModel.fetchCardsBack()
 
         observerViewModel()
     }

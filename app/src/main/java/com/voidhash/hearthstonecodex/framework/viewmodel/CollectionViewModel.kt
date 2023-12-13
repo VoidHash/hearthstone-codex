@@ -2,17 +2,16 @@ package com.voidhash.hearthstonecodex.framework.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.voidhash.hearthstonecodex.framework.local.dao.CardBackDao
+import com.voidhash.hearthstonecodex.framework.local.dao.CardDao
 import com.voidhash.hearthstonecodex.framework.model.CardBackModel
-import com.voidhash.hearthstonecodex.framework.model.InfoModel
+import com.voidhash.hearthstonecodex.framework.model.CardBase
+import com.voidhash.hearthstonecodex.framework.model.CardModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.observers.DisposableSingleObserver
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class CardBackViewModel(
-    private val cardBackDao: CardBackDao
-) : ViewModel() {
+class CollectionViewModel(private val cardDao: CardDao): ViewModel() {
 
     private val disposable = CompositeDisposable()
     val isLoading = MutableLiveData<Boolean>()
@@ -20,36 +19,28 @@ class CardBackViewModel(
     val errorMessage = MutableLiveData<String>()
     val isDone = MutableLiveData<Boolean>()
 
-    val backCardsCollection: MutableLiveData<List<CardBackModel>> by lazy {
-        MutableLiveData<List<CardBackModel>>()
+    val cardsCollection: MutableLiveData<List<CardBase>> by lazy {
+        MutableLiveData<List<CardBase>>()
     }
 
-    fun fetchCardsBack() {
-        isDone.value = false
-        getCardsBack()
-    }
-
-    private fun getCardsBack() {
+    fun getCardsFromCollection(collection: String) {
         isLoading.value = true
         disposable.add(
-            cardBackDao.getAllCards()
-                //cria uma nova thread para rodar em background
+            cardDao.getFromCardSet(collection)
                 .subscribeOn(Schedulers.newThread())
-                //o resultado dessa nova thread será mostrada na thread principal
                 .observeOn(AndroidSchedulers.mainThread())
-                //define o q vamos fazer com o resuldado dessa thread
-                .subscribeWith(object: DisposableSingleObserver<List<CardBackModel>>(){
-                    override fun onSuccess(value: List<CardBackModel>) {
+                .subscribeWith(object: DisposableSingleObserver<List<CardBase>>() {
+                    override fun onSuccess(cardList: List<CardBase>) {
                         hasError.value = false
                         isLoading.value = false
-                        backCardsCollection.value = value
+                        cardsCollection.value = cardList
                     }
 
                     override fun onError(e: Throwable) {
                         e.printStackTrace()
+                        errorMessage.value = e.message
                         hasError.value = true
                         isLoading.value = false
-                        errorMessage.value = "Check your internet connection"
                     }
                 })
         )
