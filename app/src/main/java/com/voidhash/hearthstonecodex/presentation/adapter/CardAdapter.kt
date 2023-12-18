@@ -3,55 +3,53 @@ package com.voidhash.hearthstonecodex.presentation.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.voidhash.hearthstonecodex.R
 import com.voidhash.hearthstonecodex.databinding.RecyclerCardBackBinding
-import com.voidhash.hearthstonecodex.framework.model.CardBackModel
+import com.voidhash.hearthstonecodex.framework.model.CardBase
 import com.voidhash.hearthstonecodex.framework.util.ImageUtil
 
-class CardBackAdapter(private var cardBackList: List<CardBackModel>)
-    : RecyclerView.Adapter<CardBackAdapter.ViewHolder>() {
+class CardAdapter(private var cardList: List<CardBase>)
+    : RecyclerView.Adapter<CardAdapter.ViewHolder>() {
 
     private lateinit var context: Context
-    var listener: CardBackListener? = null
+    var listener: CardListener? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardBackAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardAdapter.ViewHolder {
         context = parent.context
         val binding = RecyclerCardBackBinding
             .inflate(LayoutInflater.from(context), parent, false)
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CardBackAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CardAdapter.ViewHolder, position: Int) {
         with(holder) {
-            with(cardBackList[position]) {
+            with(cardList[position]) {
                 this.img?.let { ImageUtil.loadRemoteImage(binding.imgCardBack, it) }
 
                 binding.imgCardBack.setOnClickListener {
-                    listener?.onCardBackSelected(this)
+                    listener?.onCardSelected(this)
                 }
             }
         }
     }
 
     override fun getItemCount(): Int {
-        return cardBackList.size
+        return cardList.size
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateList(newList: List<CardBackModel>) {
-        cardBackList = newList
+    fun updateList(newList: List<CardBase>) {
+        cardList = newList
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(val binding:RecyclerCardBackBinding)
+    inner class ViewHolder(val binding: RecyclerCardBackBinding)
         : RecyclerView.ViewHolder(binding.root)
 
-    interface CardBackListener {
-        fun onCardBackSelected(cardBackModel: CardBackModel)
+    interface CardListener {
+        fun onCardSelected(cardBase: CardBase)
     }
 }

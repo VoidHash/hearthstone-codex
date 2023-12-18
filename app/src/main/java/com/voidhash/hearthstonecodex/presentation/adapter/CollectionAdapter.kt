@@ -26,7 +26,10 @@ class CollectionAdapter(private var collectionList: List<Int>)
             with(collectionList[position]) {
                 val drawable = androidx.core.content.ContextCompat.getDrawable(context, this)
                 binding.imgCollection.setImageDrawable(drawable)
-                listener?.onCollectionSelected(CollectionUtils.getCollectionNameByDrawable(this))
+                binding.imgCollection.setOnClickListener {
+                    CollectionUtils.getCollectionNameByDrawable(this)
+                        ?.let { listener?.onCollectionSelected(it) }
+                }
             }
         }
     }

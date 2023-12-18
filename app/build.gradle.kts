@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -105,6 +106,8 @@ dependencies {
 
     //Data Binding
     ksp ("com.android.databinding:compiler:$dataBindingVersion")
+
+    implementation ("com.facebook.shimmer:shimmer:0.5.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

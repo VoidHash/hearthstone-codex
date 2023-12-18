@@ -63,7 +63,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         viewModel.hearthstoneInfo.observe(viewLifecycleOwner) { info ->
             info.let {
-                val standardList = CollectionUtils.getCollectionDrawableByName(info.standard)
+                val standardList = CollectionUtils.getCollectionDrawableByName(info.standard).reversed()
                 standardAdapter.updateList(standardList)
                 val wildList = CollectionUtils.getCollectionDrawableByName(info.wild)
                 wildAdapter.updateList(wildList)

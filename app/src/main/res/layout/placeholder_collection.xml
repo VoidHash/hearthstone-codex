@@ -9,7 +9,7 @@
         android:id="@+id/img_collection"
         android:layout_width="580px"
         android:layout_height="350px"
+        android:background="#dddddd"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/titans_logo" />
+        app:layout_constraintTop_toTopOf="parent" />
 </LinearLayout>
