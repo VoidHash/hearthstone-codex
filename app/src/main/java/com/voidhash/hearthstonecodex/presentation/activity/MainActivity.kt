@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.navigation.NavigationView
 import com.voidhash.hearthstonecodex.R
@@ -27,19 +28,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
-        setContentView(view)
-
-        barDrawer = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
-        barDrawer.syncState()
-        binding.drawerLayout.addDrawerListener(barDrawer)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.navigationView.setNavigationItemSelectedListener(this)
+
+        barDrawer = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
+        binding.drawerLayout.addDrawerListener(barDrawer)
+        binding.drawerLayout.bringToFront()
+        barDrawer.syncState()
 
         navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
 
+        setContentView(view)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -49,6 +51,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.item_home -> navController.navigate(R.id.mainFragment)
+            R.id.item_search_cards -> navController.navigate(R.id.mainFragment)
+            R.id.item_collection -> navController.navigate(R.id.collectionFragment)
+            R.id.item_cards_back -> navController.navigate(R.id.cardBackFragment)
+
+        }
         binding.drawerLayout.closeDrawers()
         return true
     }
