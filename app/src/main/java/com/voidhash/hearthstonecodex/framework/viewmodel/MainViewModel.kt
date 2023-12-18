@@ -41,7 +41,6 @@ class MainViewModel(
         getInfo()
         getCards()
         getCardsBack()
-        //getStandCollectionDrawable()
     }
 
     private fun getInfo() {
@@ -180,14 +179,4 @@ class MainViewModel(
                 }
             })
     }
-
-//    @SuppressLint("CheckResult")
-//    fun getStandCollectionDrawable(): List<String> {
-//        infoDao.getInfo()
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe {
-//                    it.standard
-//                }
-//    }
 }

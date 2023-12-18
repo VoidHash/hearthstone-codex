@@ -1,6 +1,7 @@
 package com.voidhash.hearthstonecodex.framework.remote.service
 
 import com.voidhash.hearthstonecodex.framework.model.CardBackModel
+import com.voidhash.hearthstonecodex.framework.model.CardBase
 import com.voidhash.hearthstonecodex.framework.model.CardModel
 import com.voidhash.hearthstonecodex.framework.model.InfoModel
 import com.voidhash.hearthstonecodex.framework.remote.api.HearthstoneAPI
@@ -18,5 +19,9 @@ class HearthstoneService(private val api: HearthstoneAPI) {
 
     fun getCardsBack(): Single<List<CardBackModel>> {
         return  api.getCardsBack()
+    }
+
+    fun getCardSearch(name: String): Single<List<CardBase>> {
+        return api.getCardSearch(name)
     }
 }

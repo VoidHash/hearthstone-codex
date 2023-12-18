@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.item_home -> navController.navigate(R.id.mainFragment)
-            R.id.item_search_cards -> navController.navigate(R.id.mainFragment)
+            R.id.item_search_cards -> navController.navigate(R.id.searchFragment)
             R.id.item_collection -> navController.navigate(R.id.collectionFragment)
             R.id.item_cards_back -> navController.navigate(R.id.cardBackFragment)
 

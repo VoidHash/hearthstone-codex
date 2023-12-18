@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.voidhash.hearthstonecodex.R
 import com.voidhash.hearthstonecodex.databinding.FragmentCardBinding
 import com.voidhash.hearthstonecodex.framework.model.CardBase
@@ -13,7 +11,6 @@ import com.voidhash.hearthstonecodex.framework.util.CollectionUtils
 import com.voidhash.hearthstonecodex.framework.util.ImageUtil
 import com.voidhash.hearthstonecodex.framework.viewmodel.CardViewModel
 import com.voidhash.hearthstonecodex.presentation.adapter.CardAdapter
-import com.voidhash.hearthstonecodex.presentation.adapter.CardBackAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CardFragment : Fragment(R.layout.fragment_card), CardAdapter.CardListener {

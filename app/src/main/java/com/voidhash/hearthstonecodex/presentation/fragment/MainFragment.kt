@@ -44,7 +44,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         binding.rclCardBack.adapter = cardBackAdapter
 
         binding.buttonSearch.setOnClickListener {
-            //TODO
+            this.findNavController().navigate(R.id.action_mainFragment_to_searchFragment)
         }
 
         binding.buttonCollection.setOnClickListener {

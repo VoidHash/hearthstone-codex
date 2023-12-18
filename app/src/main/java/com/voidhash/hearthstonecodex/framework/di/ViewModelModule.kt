@@ -13,7 +13,7 @@ object ViewModelModule {
         viewModel { MainViewModel(get(), get(), get(), get()) }
         viewModel { CardBackViewModel(get()) }
         viewModel { CollectionViewModel(get()) }
-        viewModel { CardViewModel(get()) }
+        viewModel { CardViewModel(get(), get()) }
 
     }
 }
