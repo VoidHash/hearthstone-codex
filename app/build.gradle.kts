@@ -41,17 +41,20 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString()
+
+
 }
 
 val kotlinVersion = "1.12.0"
 val lifecycleVersion = "2.6.2"
-val navigationVersion = "2.7.5"
+val navigationVersion = "2.7.6"
 val rxjavaVersion = "3.1.5"
 val rxAndroidVersion = "3.0.2"
 val okhttpVersion = "4.10.0"
@@ -60,12 +63,14 @@ val roomVersion = "2.6.1"
 val koinVersion = "3.5.0"
 val glideVersion = "4.16.0"
 val dataBindingVersion = "3.1.4"
+val mockkVersion = "1.13.8"
+val mockitoVersion = "4.8.0"
 
 dependencies {
 
     implementation("androidx.core:core-ktx:$kotlinVersion")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation ("com.google.android.material:material:1.10.0")
+    implementation ("com.google.android.material:material:1.11.0")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
 
     //Lifecycle Library
@@ -110,6 +115,15 @@ dependencies {
     implementation ("com.facebook.shimmer:shimmer:0.5.0")
 
     testImplementation("junit:junit:4.13.2")
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    testImplementation ("org.mockito:mockito-inline:$mockitoVersion")
+    testImplementation("io.mockk:mockk:$mockkVersion")
+    testImplementation ("io.mockk:mockk-android:$mockkVersion")
+    testImplementation ("io.mockk:mockk-agent:$mockkVersion")
+
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.arch.core:core-testing:2.2.0")
+    androidTestImplementation ("io.mockk:mockk-android:$mockkVersion")
+    androidTestImplementation ("io.mockk:mockk-agent:$mockkVersion")
 }

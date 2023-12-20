@@ -39,10 +39,7 @@ class SearchFragment : Fragment(R.layout.fragment_search), CardAdapter.CardListe
         }
 
         viewModel.cardsCollection.observe(viewLifecycleOwner) { cardList ->
-            val listFilter: List<CardBase> = cardList.filter  {
-                it.img != null
-            }
-            cardAdapter.updateList(listFilter)
+            cardAdapter.updateList(cardList)
         }
     }
 

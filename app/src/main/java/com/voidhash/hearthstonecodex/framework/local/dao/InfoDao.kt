@@ -15,10 +15,10 @@ import io.reactivex.rxjava3.core.Single
 interface InfoDao {
 
     @Query("SELECT (SELECT COUNT(*) FROM info_table) == 0")
-    fun isEmpty(): LiveData<Boolean>
+    fun isEmpty(): Single<Boolean>
 
     @Query("SELECT * FROM info_table")
-    fun getInfo(): LiveData<InfoModel>
+    fun getInfo(): Single<InfoModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addInfo(infoEntity: InfoModel) : Completable

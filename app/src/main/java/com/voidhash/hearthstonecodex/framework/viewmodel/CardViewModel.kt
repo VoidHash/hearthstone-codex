@@ -67,7 +67,9 @@ class CardViewModel(
                     override fun onSuccess(value: List<CardBase>) {
                         hasError.value = false
                         isLoading.value = false
-                        cardsCollection.value = value
+                        cardsCollection.value = value.filter  {
+                            it.img != null
+                        }
                     }
 
                     override fun onError(e: Throwable) {

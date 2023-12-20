@@ -17,7 +17,6 @@ class CollectionViewModel(private val cardDao: CardDao): ViewModel() {
     val isLoading = MutableLiveData<Boolean>()
     val hasError = MutableLiveData<Boolean>()
     val errorMessage = MutableLiveData<String>()
-    val isDone = MutableLiveData<Boolean>()
 
     val cardsCollection: MutableLiveData<List<CardBase>> by lazy {
         MutableLiveData<List<CardBase>>()
