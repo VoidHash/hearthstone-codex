@@ -80,16 +80,18 @@ class MainViewModelTest {
         val infoMock = InfoModel(patch = "28.2.1.190920")
 
         val testSingle01: Single<CardModel> = Single.just(cardModel)
-        Mockito.`when`(hearthstoneService.getCards()).thenReturn(testSingle01)
         Mockito.`when`(cardDao.addCard(cardModel.getAllCards())).thenReturn(Completable.complete())
+        Mockito.`when`(hearthstoneService.getCards()).thenReturn(testSingle01)
 
         val testSingle02: Single<List<CardBackModel>> = Single.just(cardBackList)
-        Mockito.`when`(hearthstoneService.getCardsBack()).thenReturn(testSingle02)
+        Mockito.`when`(cardBackDao.getAllCards()).thenReturn(testSingle02)
         Mockito.`when`(cardBackDao.addCard(cardBackList)).thenReturn(Completable.complete())
+        Mockito.`when`(hearthstoneService.getCardsBack()).thenReturn(testSingle02)
 
         val testSingle03: Single<InfoModel> = Single.just(infoMock)
-        Mockito.`when`(hearthstoneService.getInfo()).thenReturn(testSingle03)
         Mockito.`when`(infoDao.addInfo(infoMock)).thenReturn(Completable.complete())
+        Mockito.`when`(infoDao.getInfo()).thenReturn(testSingle03)
+        Mockito.`when`(hearthstoneService.getInfo()).thenReturn(testSingle03)
 
         viewModel.initApp()
 
@@ -102,13 +104,14 @@ class MainViewModelTest {
     @Test
     fun `Test request ERROR`() {
         val testSingle01: Single<InfoModel> = Single.error(Throwable())
+        Mockito.`when`(infoDao.getInfo()).thenReturn(testSingle01)
         Mockito.`when`(hearthstoneService.getInfo()).thenReturn(testSingle01)
 
         val testSingle02: Single<CardModel> = Single.error(Throwable())
         Mockito.`when`(hearthstoneService.getCards()).thenReturn(testSingle02)
 
         val testSingle03: Single<List<CardBackModel>> = Single.error(Throwable())
-        Mockito.`when`(hearthstoneService.getCardsBack()).thenReturn(testSingle03)
+        Mockito.`when`(cardBackDao.getAllCards()).thenReturn(testSingle03)
 
         viewModel.initApp()
         Assert.assertEquals(false, viewModel.isLoading.value)

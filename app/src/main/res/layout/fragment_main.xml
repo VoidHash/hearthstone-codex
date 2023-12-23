@@ -8,6 +8,7 @@
     tools:context=".presentation.fragment.MainFragment">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/main_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -121,7 +122,7 @@
                     android:orientation="horizontal"
                     android:scrollbars="horizontal"
                     tools:itemCount="1"
-                    tools:listitem="@layout/recycler_wild_formart" />
+                    tools:listitem="@layout/recycler_collection" />
 
             </LinearLayout>
 

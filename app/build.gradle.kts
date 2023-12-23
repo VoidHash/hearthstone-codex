@@ -63,7 +63,6 @@ val roomVersion = "2.6.1"
 val koinVersion = "3.5.0"
 val glideVersion = "4.16.0"
 val dataBindingVersion = "3.1.4"
-val mockkVersion = "1.13.8"
 val mockitoVersion = "4.8.0"
 
 dependencies {
@@ -114,16 +113,25 @@ dependencies {
 
     implementation ("com.facebook.shimmer:shimmer:0.5.0")
 
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    testImplementation ("junit:junit:4.13.2")
+    testImplementation ("androidx.arch.core:core-testing:2.2.0")
+    testImplementation ("org.mockito:mockito-core:$mockitoVersion")
     testImplementation ("org.mockito:mockito-inline:$mockitoVersion")
-    testImplementation("io.mockk:mockk:$mockkVersion")
-    testImplementation ("io.mockk:mockk-android:$mockkVersion")
-    testImplementation ("io.mockk:mockk-agent:$mockkVersion")
 
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation("androidx.arch.core:core-testing:2.2.0")
-    androidTestImplementation ("io.mockk:mockk-android:$mockkVersion")
-    androidTestImplementation ("io.mockk:mockk-agent:$mockkVersion")
+    androidTestImplementation ("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation ("androidx.test:rules:1.5.0")
+    androidTestImplementation ("androidx.test:runner:1.5.2")
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation ("androidx.arch.core:core-testing:2.2.0")
+    androidTestImplementation ("androidx.test.espresso:espresso-contrib:3.5.1")
+    androidTestImplementation ("org.hamcrest:hamcrest:2.2")
+    androidTestImplementation ("org.mockito:mockito-core:$mockitoVersion")
+    //androidTestImplementation ("org.mockito:mockito-inline:$mockitoVersion")
+    androidTestImplementation ("org.mockito:mockito-android:$mockitoVersion")
+    androidTestImplementation ("androidx.navigation:navigation-testing:$navigationVersion")
+
+
+
+    debugImplementation ("androidx.fragment:fragment-testing:1.6.2")
+
 }

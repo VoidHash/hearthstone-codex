@@ -46,6 +46,30 @@ class MainViewModel(
     private fun getInfo() {
         isLoading.value = true
         disposable.add(
+            infoDao.getInfo()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<InfoModel>() {
+                    override fun onSuccess(model: InfoModel) {
+                        hasError.value = false
+                        hearthstoneInfo.value = model
+                        getInfoRemote()
+                    }
+
+                    override fun onError(e: Throwable) {
+                        e.printStackTrace()
+                        hasError.value = true
+                        isLoading.value = false
+                        errorMessage.value = "Check your internet connection"
+                        getInfoRemote()
+                    }
+
+                })
+        )
+    }
+
+    private fun getInfoRemote() {
+        disposable.add(
             hearthstoneService.getInfo()
                 //cria uma nova thread para rodar em background
                 .subscribeOn(Schedulers.newThread())
@@ -136,6 +160,29 @@ class MainViewModel(
     private fun getCardsBack() {
         isLoading.value = true
         disposable.add(
+            cardBackDao.getAllCards()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableSingleObserver<List<CardBackModel>>() {
+                    override fun onSuccess(model: List<CardBackModel>) {
+                        hasError.value = false
+                        backCardsCollection.value = model
+                        getCardsBackRemote()
+                    }
+
+                    override fun onError(e: Throwable) {
+                        e.printStackTrace()
+                        hasError.value = true
+                        isLoading.value = false
+                        errorMessage.value = "Check your internet connection"
+                    }
+
+                })
+        )
+    }
+
+    private fun getCardsBackRemote() {
+        disposable.add(
             hearthstoneService.getCardsBack()
                 //cria uma nova thread para rodar em background
                 .subscribeOn(Schedulers.newThread())
@@ -159,7 +206,6 @@ class MainViewModel(
                 })
         )
     }
-
     private fun saveCardsBackIntoDB(value: List<CardBackModel>) {
         cardBackDao.addCard(value)
             .subscribeOn(Schedulers.io())
