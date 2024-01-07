@@ -20,7 +20,6 @@ class CollectionFragment : Fragment(R.layout.fragment_collection),
     private var fragmentCollectionFragment: FragmentCollectionBinding? = null
     private lateinit var binding: FragmentCollectionBinding
     private lateinit var collectionAdapter: CollectionAdapter
-    private val viewModel: CollectionViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

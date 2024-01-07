@@ -96,6 +96,7 @@ dependencies {
 
     //Room Library
     implementation ("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     ksp ("androidx.room:room-compiler:$roomVersion")
     implementation ("androidx.room:room-rxjava3:$roomVersion")
 
@@ -111,8 +112,6 @@ dependencies {
     //Data Binding
     ksp ("com.android.databinding:compiler:$dataBindingVersion")
 
-    implementation ("com.facebook.shimmer:shimmer:0.5.0")
-
     testImplementation ("junit:junit:4.13.2")
     testImplementation ("androidx.arch.core:core-testing:2.2.0")
     testImplementation ("org.mockito:mockito-core:$mockitoVersion")
@@ -126,7 +125,6 @@ dependencies {
     androidTestImplementation ("androidx.test.espresso:espresso-contrib:3.5.1")
     androidTestImplementation ("org.hamcrest:hamcrest:2.2")
     androidTestImplementation ("org.mockito:mockito-core:$mockitoVersion")
-    //androidTestImplementation ("org.mockito:mockito-inline:$mockitoVersion")
     androidTestImplementation ("org.mockito:mockito-android:$mockitoVersion")
     androidTestImplementation ("androidx.navigation:navigation-testing:$navigationVersion")
 

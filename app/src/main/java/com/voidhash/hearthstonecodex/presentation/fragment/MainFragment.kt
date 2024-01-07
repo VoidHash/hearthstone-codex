@@ -13,7 +13,7 @@ import com.voidhash.hearthstonecodex.presentation.adapter.CardBackAdapter
 import com.voidhash.hearthstonecodex.presentation.adapter.CollectionAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainFragment : Fragment(R.layout.fragment_main) {
+class MainFragment : Fragment(R.layout.fragment_main), CollectionAdapter.CollectionListener {
 
     private var fragmentMainBinding: FragmentMainBinding? = null
     private val viewModel: MainViewModel by viewModel()
@@ -29,11 +29,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         fragmentMainBinding = binding
 
         standardAdapter = CollectionAdapter(listOf())
+        standardAdapter.listener = this
         binding.rclStandard.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         binding.rclStandard.adapter = standardAdapter
 
         wildAdapter = CollectionAdapter(listOf())
+        wildAdapter.listener = this
         binding.rclWild.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         binding.rclWild.adapter = wildAdapter
@@ -80,6 +82,11 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     override fun onDestroyView() {
         super.onDestroyView()
         fragmentMainBinding = null
+    }
+
+    override fun onCollectionSelected(collection: String) {
+        val action = MainFragmentDirections.actionMainFragmentToCardFragment(collection)
+        findNavController().navigate(action)
     }
 
 }

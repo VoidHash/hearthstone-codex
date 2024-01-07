@@ -6,41 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".presentation.fragment.CardFragment">
 
-
-    <ImageView
-        android:id="@+id/img_background"
-        android:layout_width="0dp"
-        android:layout_height="273dp"
-        android:layout_marginTop="-38dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/altarec_bg" />
-
-    <ImageView
-        android:id="@+id/img_logo"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:src="@drawable/altarec_logo"
-        app:layout_constraintBottom_toBottomOf="@+id/img_background"
-        app:layout_constraintEnd_toEndOf="@+id/img_background"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/img_background"
-        app:layout_constraintTop_toTopOf="@+id/img_background" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcl_collection"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="-8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_background"
-        tools:listitem="@layout/recycler_card_back" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img_background"
+                android:layout_width="0dp"
+                android:layout_height="273dp"
+                android:layout_marginTop="-12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/altarec_bg" />
+
+            <ImageView
+                android:id="@+id/img_logo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginBottom="28dp"
+                android:src="@drawable/altarec_logo"
+                app:layout_constraintBottom_toBottomOf="@+id/img_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/img_background"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcl_collection"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_background"
+                tools:itemCount="5"
+                tools:listitem="@layout/recycler_card_back" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_lookup"
@@ -52,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible">
+        tools:visibility="gone">
 
         <ImageView
             android:id="@+id/img_card_lookup"
