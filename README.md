@@ -1,33 +1,32 @@
 
 # Hearthstone Codex
 
-Hearthstone Codex é um aplicativo Android desenvolvido para demonstrar e exercitar minhas habilidades em desenvolvimento mobile utilizando a plataforma Android. Ele consome uma API para fornecer informações detalhadas sobre o popular jogo de cartas Hearthstone.
+Hearthstone Codex is an Android application developed to demonstrate and exercise my mobile development skills using the Android platform. It consumes an API to provide detailed information about the popular card game Hearthstone.
 
-## Recursos Principais
+## Key Development Features
 
-- **Linguagem:** Kotlin
-- **Arquitetura:** MVVM (Model-View-ViewModel)
-- **Recursos Principais:**
+- **Programin language:** Kotlin
+- **Development Architecture:** MVVM (Model-View-ViewModel)
+- **Resource library:**
   - View Binding
   - Data Binding
   - Navigation Graph
   - Navigation Drawer
-  - Retrofit para Requisições REST
-  - Room Database para persistência local
-  - RxJava
-  - RxAndroid
-  - Koin para Injeção de Dependências
-  - Glide para carregamento de imagens
-- **Testes:**
+  - Retrofit - Rest Request
+  - Room Database - Local persistence
+  - RxJava, RxAndroid - Reactive frameworks
+  - Koin - Depêndencies injection
+  - Glide - Image loding
+- **Test:**
   - JUnit 
   - Mockito 
-  - Testes Unitários
-  - Testes Instrumentais
-- **Outros Recursos:**
-  - Desenvolvido observando os princípios SOLID 
-  - Interface de usuário moderna e intuitiva
-  - Utilização eficiente de bibliotecas de terceiros
-  - Gerenciamento de dependências utilizando o Gradle
+  - Unitary test
+  - Instrumental test
+- **Other resources:**
+  - Developed following SOLID principles
+  - Modern and intuitive user interface
+  - Efficient use of third-party libraries
+  - Dependency management using Gradle
   
 ## Screenshots
 
@@ -35,27 +34,27 @@ Hearthstone Codex é um aplicativo Android desenvolvido para demonstrar e exerci
 
 ![02](https://github.com/VoidHash/hearthstone-codex/assets/8929413/3b97fa2b-acc8-457c-9ef8-504a11a2aee7)
 
-## Como Contribuir
+## How to Contribute
 
-Se você gostaria de contribuir para o projeto, siga estes passos:
+If you would like to contribute to the project, follow these steps:
 
-1. Faça um Fork do repositório
-2. Crie uma branch para a sua feature (`git checkout -b feature/NomeDaFeature`)
-3. Faça commit das suas mudanças (`git commit -m 'Adicionando nova feature'`)
-4. Faça push para a branch (`git push origin feature/NomeDaFeature`)
-5. Abra um Pull Request
+1. Make a Fork of this repository
+2. Create a new branch for your feature (`git checkout -b feature/FeatureName`)
+3. Commit your changes (`git commit -m 'My new cool feature for Heartstone Codex'`)
+4. Push your branch (`git push origin feature/FeatureName`)
+5. Open a Pull Request
 
-## Configuração do Projeto
+## Project Configuration
 
-Para configurar o projeto localmente, siga estas instruções:
+To configure the project locally, follow these instructions:
 
-1. Clone o repositório: `git clone https://github.com/VoidHash/hearthstone-codex/`
-2. Abra o projeto no Android Studio
-3. Execute o aplicativo em um emulador ou dispositivo Android (requer conexão com a internet)
+1. Clone this repository: `git clone https://github.com/VoidHash/hearthstone-codex/`
+2. Open it using Android Studio
+3. Run the project in an emulator or physical device (internet conection required)
 
-## Licença
+## License
 
-Este projeto está licenciado sob a [Licença MIT](https://github.com/VoidHash/hearthstone-codex/blob/master/LICENSE).
+This project is licensed under [MIT License](https://github.com/VoidHash/hearthstone-codex/blob/master/LICENSE).
 
 ---
 
