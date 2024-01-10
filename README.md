@@ -1,7 +1,7 @@
 
 # Hearthstone Codex
 
-Hearthstone Codex is an Android application developed to demonstrate and exercise my mobile development skills using the Android platform. It consumes an API to provide detailed information about the popular card game Hearthstone.
+Hearthstone Codex is an Android application developed to demonstrate and exercise my mobile development skills using the Android platform. It consumes an API to provide detailed information about the popular card game Hearthstone. You check all collection release so far, see all cards back and search for any card you want, everything with an intuitive and cool interface! 
 
 ## Key Development Features
 
